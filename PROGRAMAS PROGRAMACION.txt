@@ -1,0 +1,95 @@
+
+import java.util.Scanner;
+import java.awt.*;
+
+import javax.swing.JPasswordField;
+
+public class Examen2 extends JFrame {
+	private JPasswordField pass;
+
+	public static void main(String[] args) {
+		Scanner entra=new Scanner(System.in);
+		String usuario="";
+		String contrasena="";
+		System.out.println("Ingresa Usuario");
+		usuario=entra.nextLine();
+		System.out.println("Ingresa contraseña");
+		contrasena=entra.nextLine();
+		entra.close();
+		
+		
+		
+
+
+
+
+
+
+package Unidad5;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class CamposTexto extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField texto1, texto2, texto3;
+	private JPasswordField pass;
+	
+	private class ManejadorTextos implements ActionListener{
+		public void actionPerformed(ActionEvent evento){
+			String cadena="";
+			if (evento.getSource()==texto1){
+				cadena=String.format("Texto1: %s", evento.getActionCommand());
+			}
+			else if (evento.getSource()==texto2){
+				cadena=String.format("Texto2: %s", evento.getActionCommand());
+			}
+			else if (evento.getSource()==texto3){
+				cadena=String.format("Texto3: %s", evento.getActionCommand());
+			}
+			else if (evento.getSource()==pass){
+				cadena=String.format("Pass: %s", evento.getActionCommand());
+			}
+			JOptionPane.showMessageDialog(null,cadena);
+		}
+	}
+	
+	public CamposTexto(){
+		super("Campos de Texto y campo Password usando Eventos");
+		setLayout(new FlowLayout());
+		texto1= new JTextField(10);
+		add (texto1);
+		
+		texto2= new JTextField("Captura un texto");
+		texto2.setToolTipText("Captura algo en esta entrada");
+		add (texto2);
+		
+		texto3= new JTextField("Texto NO Editable");
+		texto3.setEditable(false);
+		add(texto3);
+		
+		pass= new JPasswordField ("Texto Oculto");
+		add(pass);
+		
+		ManejadorTextos manejador= new ManejadorTextos();
+		texto1.addActionListener(manejador);
+		texto2.addActionListener(manejador);
+		texto3.addActionListener(manejador);
+		pass.addActionListener(manejador);
+	}
+
+	public static void main(String[] args) {
+		CamposTexto ventana= new CamposTexto();
+		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Esto_sirve_para_que_cuando_se_cierra_el_programa
+		//se_quita_el_cuadrito_rojo_de_la_parte_inferior
+		
+		ventana.setSize(450,100);
+		ventana.setLocation(300,300);
+		ventana.setVisible(true);
+	
+
+	}
+
+}
